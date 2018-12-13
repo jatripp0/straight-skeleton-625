@@ -4,7 +4,7 @@
 
 <head>
 
-    <title>Frostburg Forward</title>
+    <title>Straight Skeleton Generator</title>
 
     <meta charset="utf-8">
     <meta name="description" content="">
@@ -12,28 +12,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700" rel="stylesheet">
-    <link href="app.css" type="text/css" rel="stylesheet">
+    <link href="css/app.css" type="text/css" rel="stylesheet">
 </head>
 
-<body>
-    <header>
-        <nav class="grid-fixed">
-            <a href="index.html" class="title">Straight Skeleton Generator</a>
+<body onload="showHelp()">
+    <header id="header" class="header">
+        <nav>
+            <h1 class="title">Straight Skeleton Generator</h1>
 
         </nav>
     </header>
 
     <main>
-        <section>
-          <button onclick="completePolygon(event)">Generate</button>
+        <section id="user-controls" class="user-controls">
+          <button class="ctrl-button" onclick="clearAll()">Clear</button>
+          <button class="ctrl-button" onclick="undo()">Undo</button>
+          <button class="ctrl-button" onclick="print()">Print</button>
+          <a id="saveLink" class="ctrl-link" download="straight_skeleton.png">Save Image</a>
+        </section>
+
+        <section class="canvas-container">
+          <button id="help-button" class="help-button"><img class="help-icon" src="resources/help-button.png"></button>
           <canvas id="canvas" class="canvas"></canvas>
         </section>
+        <div class="generate-container">
+          <button class="generateBtn" onclick="completePolygon(event)">Generate</button>
+        </div>
     </main>
 
-    <footer>
+    <div id="help-modal" class="modal">
 
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>Straight Skeleton Generator - Getting Started</h2>
+        </div>
+        <div class="modal-body">
+          <p>Welcome to the Straight Skeleton Generator. Using this application,
+            you will be able to draw a polygon on the canvas by clicking your mouse to create a straight skeleton, which is a diagram
+            showing the topological characteristics of a polygon. For more information regarding straight skeletons, we recommend
+            reading the following paper on the subject: <a target="_blank" href="http://student.ulb.ac.be/~dtimmerm/straightskeleton/straight-skeleton.html">Link</a></p>
+          <p>Click points along the canvas to create the edges of your polygon. It will
+            begin to fill as you draw it. You may choose to undo the last point drawn on the
+            canvas or to clear it entirely. When you are satisfied with your polygon, click the <b>Generate</b> button or right click to draw the final point and close the polygon.
+          </p>
+          <p>
+            Please note that this application requires that the polygon be convex, meaning all of its interior angles are less than 180 degrees. You will be notified if the polygon you are drawing is invalid.
+          </p>
+          <img src="resources/ConvexPolygon_1000.gif">
+        </div>
+        <div class="modal-footer">
+          <h3>Enjoy!</h3>
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="footer">
+      <h1>Created by Johnathan Tripp, Emma Seibert, Janai Foster, Geremy Ibobi, and Osahon Ewere</h1>
+      <div>Icons made by <a href="https://www.flaticon.com/authors/anton-saputro" title="Anton Saputro">Anton Saputro</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
     </footer>
-    <script src="canvas.js"></script>
+    <script src="js/canvas.js"></script>
 </body>
 
 </html>
